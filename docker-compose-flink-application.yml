@@ -1,0 +1,29 @@
+services:
+  jobmanager:
+    image: flink:2.0-java21
+    ports:
+      - "8081:8081"
+    command: standalone-job --job-classname org.example.FraudDetectionFlink #--jar-file /opt/flink/usrlib/streamProcessing-1.0-SNAPSHOT-jar-with-dependencies.jar
+    volumes:
+        - /home/yald/Documents/kafka_learn/streamProcessing/artifacts:/opt/flink/usrlib
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        parallelism.default: 1
+
+  taskmanager:
+    image: flink:2.0-java21
+    command: taskmanager
+    volumes:
+      - /home/yald/Documents/kafka_learn/streamProcessing/artifacts:/opt/flink/usrlib
+    depends_on:
+      - jobmanager
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: jobmanager
+        parallelism.default: 2
+        taskmanager.numberOfTaskSlots: 2
+
+
