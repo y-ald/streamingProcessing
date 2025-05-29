@@ -64,4 +64,8 @@ Topic: foo	Partition: 0	Leader: 5	Replicas: 5,6,7	Isr: 5,6,7
 $ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group my-group --state
 COORDINATOR (ID)          ASSIGNMENT-STRATEGY       STATE                #MEMBERS
 localhost:9092 (0)        range                     Stable               4
+
+./bin/flink run --jar /home/yald/Documents/kafka_learn/streamProcessing/artifacts/streamProcessing-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+
 ```

@@ -9,7 +9,7 @@ public class TransactionDataSource {
     private static final GeneratorFunction<Long, Transaction> generatorFunction = index  -> {
         String transactionId = index.toString();
         String accountId = Integer.toString( (int) (Math.random() * 5));
-        double amount = index % 100==0 ? 0.93: Math.pow(Math.random(), 0.2) * 700;
+        double amount = index % 2==0 ? 0.93: Math.pow(Math.random(), 0.2) * 700;
 
         return new Transaction(transactionId, accountId, amount);
     };
@@ -19,7 +19,7 @@ public class TransactionDataSource {
     public TransactionDataSource() {
         transactionDataGeneratorSource = new DataGeneratorSource<Transaction>(
                 generatorFunction,
-                1000L,
+                10L,
                 TypeInformation.of(Transaction.class)
         );
     }

@@ -64,7 +64,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>org.frauddection.FraudDetectionFlink</mainClass>
+              <mainClass>org.yald.application.FlinkJobLauncher</mainClass>
             </manifest>
           </archive>
           

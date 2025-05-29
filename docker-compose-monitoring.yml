@@ -1,0 +1,9 @@
+services:
+
+
+networks:
+  flink-net:
+    driver: bridge
+
+volumes:
+    grafana-storage:

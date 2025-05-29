@@ -82,6 +82,8 @@ services:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
+    volumes:
+      - /home/yald/Documents/kafka_learn/streamProcessing/orchestration/src/main/resources/config.yaml:/opt/flink/conf/config.yaml
     networks:
       - flink-net
 
@@ -96,9 +98,44 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 2
+    volumes:
+      - /home/yald/Documents/kafka_learn/streamProcessing/orchestration/src/main/resources/config.yaml:/opt/flink/conf/config.yaml
+    networks:
+      - flink-net
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.enable-lifecycle'
+    networks:
+      - flink-net
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - prometheus
     networks:
       - flink-net
 
 networks:
   flink-net:
     driver: bridge
+
+volumes:
+  grafana-storage:
