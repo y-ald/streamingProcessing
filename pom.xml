@@ -92,6 +92,7 @@
     <module>infrashared</module>
     <module>features/frauddection</module>
     <module>orchestration</module>
+    <module>kafkalearn</module>
   </modules>
 
 </project>

@@ -9,6 +9,8 @@
     <file url="file://$PROJECT_DIR$/features/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/infrashared/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/infrashared/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafkalearn/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/kafkalearn/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orchestration/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/orchestration/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
